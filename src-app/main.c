@@ -34,6 +34,7 @@
 #include <sys/ringbuf.h>
 
 #include <dev/intc/intc.h>
+#include "oled.h"
 
 extern struct arm_nvic_softc nvic_sc;
 
@@ -73,6 +74,8 @@ main(void)
 
 	printf("Hello world!\n");
 
+	oled_test();
+
 #if 0
 	double a;
 	double b;
@@ -95,4 +98,13 @@ main(void)
 		mdx_usleep(2000000);
 
 	return (0);
+}
+
+void
+udelay(uint32_t usec)
+{
+	int i;
+
+	for (i = 0; i < usec*1; i++)
+		;
 }
